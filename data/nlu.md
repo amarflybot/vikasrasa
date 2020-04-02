@@ -6,6 +6,17 @@
 - good evening
 - hey there
 
+## intent:check_For_Oracle
+- ORACLE
+- oracle
+- Oracle
+- ora
+
+## intent:check_For_Sap
+- SAP
+- sap
+- Sap
+
 ## intent:goodbye
 - bye
 - goodbye
@@ -54,3 +65,12 @@
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+
+## intent:invoice_user_input
+- inv1000567623
+- inv1000000012
+
+## intent:ou_user_input
+- ou: OR0000001
+- operating number: OR0000003
+- my operating number is OR0000002

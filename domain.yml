@@ -6,6 +6,10 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - check_For_Oracle
+  - check_For_Sap
+  - invoice_user_input
+  - ou_user_input
 
 actions:
 - utter_greet
@@ -14,6 +18,18 @@ actions:
 - utter_happy
 - utter_goodbye
 - utter_iamabot
+- utter_oracle_invoice
+- utter_oracle_ou
+- utter_sap
+- action_record_invoice
+- action_record_ou
+- utter_oracle_details
+
+slots:
+  oracle_invoice_number:
+    type: text
+  oracle_operating_unit:
+    type: text
 
 templates:
   utter_greet:
@@ -27,10 +43,22 @@ templates:
   - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Great, In which system do you want the invoice from? ORACLE or SAP"
 
   utter_goodbye:
   - text: "Bye"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_oracle_invoice:
+    - text: "Enter the Oracle Invoice Number"
+
+  utter_oracle_ou:
+    - text: "Enter the Oracle Operating Unit"
+
+  utter_oracle_details:
+    - text: "verify details, {oracle_invoice_number} and {oracle_operating_unit}"
+
+  utter_sap:
+    - text: "U selected Sap"

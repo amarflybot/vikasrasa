@@ -3,29 +3,17 @@
   - utter_greet
 * mood_great
   - utter_happy
+* check_For_Oracle
+  - utter_oracle_invoice
+* invoice_user_input
+  - action_record_invoice
+* ou_user_input
+  - action_record_ou
 
-## sad path 1
+## happy path
 * greet
   - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
-* affirm
+* mood_great
   - utter_happy
-
-## sad path 2
-* greet
-  - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
-* deny
-  - utter_goodbye
-
-## say goodbye
-* goodbye
-  - utter_goodbye
-
-## bot challenge
-* bot_challenge
-  - utter_iamabot
+* check_For_Sap
+  - utter_sap
