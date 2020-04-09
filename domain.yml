@@ -1,64 +1,99 @@
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - check_For_Oracle
-  - check_For_Sap
-  - invoice_user_input
-  - ou_user_input
-
 actions:
-- utter_greet
-- utter_cheer_up
-- utter_did_that_help
-- utter_happy
-- utter_goodbye
-- utter_iamabot
-- utter_oracle_invoice
-- utter_oracle_ou
-- utter_sap
+- action_default_fallback
 - action_record_invoice
 - action_record_ou
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_help
+- utter_iamabot
+- utter_new_complaint_reg_success
 - utter_oracle_details
-
+- utter_oracle_invoice_number
+- utter_oracle_ou
+- utter_user_invalid_help
+- utter_user_valid_complaint_status_check
+- utter_user_valid_help
+- utter_bad_oracle_details
+entities:
+- invoice_number
+- ou_name
+- user_choice
+intents:
+- mood_great
+- valid_invoice_number
+- valid_ou_name
+- user_valid_user_choice
+- affirm
+- greet
+- invalid_invoice_number
+- invalid_ou_name
+- deny
+- goodbye
+- mood_unhappy
+- bot_challenge
 slots:
   oracle_invoice_number:
     type: text
   oracle_operating_unit:
     type: text
-
+  oracle_response:
+    type: text
+  user_choice:
+    type: categorical
+    values:
+    - oracle
+    - sap
 templates:
-  utter_greet:
-  - text: "Hey! How are you?"
-
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_complaint_status:
+  - text: 'Status for {complaint_number} is {complaint_status}. Is there anything
+      else I can help you with? '
   utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, In which system do you want the invoice from? ORACLE or SAP"
-
+  - text: Did that help you?
+  utter_enter_complaint:
+  - text: Please enter complaint details.
+  utter_fallback_message:
+  - text: Sorry, I didn’t understand that
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
+  utter_greet:
+  - text: Hey! How are you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_help:
+  - text: Can you please selct the erp? oracle/sap
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-  utter_oracle_invoice:
-    - text: "Enter the Oracle Invoice Number"
-
-  utter_oracle_ou:
-    - text: "Enter the Oracle Operating Unit"
-
+  - text: I am a bot, powered by Rasa.
+  utter_invalid_complaint_status:
+  - text: Sorry complaint number {complaint_number} is not available in our system,
+      kindly re-enter the complaint number.
+  utter_new_complaint_reg_success:
+  - text: Your complaint is successfully registered, here is complaint number {complaint_number}
+      for your future reference. Is there anything else I can help you with?
   utter_oracle_details:
-    - text: "verify details, {oracle_invoice_number} and {oracle_operating_unit}"
-
-  utter_sap:
-    - text: "U selected Sap"
+  - text: Your details are user_choice {user_choice} , oracle_invoice_number {oracle_invoice_number}
+      , oracle_operating_unit {oracle_operating_unit}, Response from server is {oracle_response}
+      \n Did you like our services?
+  utter_oracle_invoice_number:
+  - text: enter Oracle your invoice number.
+  utter_oracle_ou:
+  - text: Please enter your OU name.
+  utter_user_invalid_help:
+  - text: Sorry entered id or number is not available in our system, kindly recheck
+      and re-enter mobile number or account id?
+  utter_user_valid_complaint_status_check:
+  - text: Please enter your complaint number.
+  utter_bad_oracle_details:
+  - text: Your details are oracle_invoice_number {oracle_invoice_number} and oracle_operating_unit {oracle_operating_unit} are not valid.
+  utter_user_valid_help:
+  - buttons:
+    - payload: /user_valid_user_choice{"user_choice":"oracle"}
+      title: Oracle
+    - payload: /user_valid_user_choice{"user_choice":"sap"}
+      title: SAP
+    text: "Could you please select an erp? \n"
